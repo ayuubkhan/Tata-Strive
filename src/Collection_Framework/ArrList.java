@@ -1,29 +1,54 @@
 package Collection_Framework;
 
-import java.util.*;
-class customCompare implements  Comparator<Integer> {
-    @Override
-    public int compare(Integer o1, Integer o2) {
-        return o1.compareTo(o2);
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+class Student {
+    private String name;
+    private double gpa;
+
+    Student(String name, double gpa) {
+        this.name = name;
+        this.gpa = gpa;
     }
+
+    public String getName () {
+        return name;
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+
 }
+
 public class ArrList {
 
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(0);
-        list.add(8);
-        list.add(4);
-//        list.remove(1);  //removes index 1
-//        list.remove(Integer.valueOf(1));  //
-        list.sort(new customCompare());
-//        Collections.sort(list);
-        System.out.println(list);
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Alice", 3.5));
+        students.add(new Student("Bob", 3.7));
+        students.add(new Student("Charlie", 3.5));
+        students.add(new Student("Akshit", 3.9));
 
-//        Comparator
+        students.sort((a,b) -> {
+            if (b.getGpa() - a.getGpa() > 0) {
+                return 1;
+            } else if (b.getGpa() - a.getGpa() < 0) {
+                return -1;
+            } else {
+                return b.getName().compareTo(a.getName());
+            }
+        });
 
+//        Efficient way
+//        Comparator<Student> comparator = Comparator.comparing(Student::getGpa).reversed().thenComparing(Student :: getName);
+//        students.sort(comparator);
 
+        for (Student s : students) {
+            System.out.println(s.getName()+" "+s.getGpa());
+        }
 
     }
 }
