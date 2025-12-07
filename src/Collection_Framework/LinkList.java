@@ -30,6 +30,7 @@ public class LinkList {
         linkedList.addFirst(0);
         linkedList.addLast(4);
 
+
 //        linkedList.removeIf(a -> a % 2 == 0);
 
         System.out.println(linkedList);
