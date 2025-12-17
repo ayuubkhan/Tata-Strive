@@ -2,6 +2,7 @@ package Collection_Framework;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class HashMapDemo {
     public static void main(String[] args) {
@@ -18,5 +19,13 @@ public class HashMapDemo {
         System.out.println(map.containsKey(27));
 
         System.out.println(map.containsValue("shubham"));
+
+//        Set<Integer> integers = map.keySet();
+        for (int i : map.keySet()) {
+            System.out.println(map.get(i));
+        }
+
+//        Internal Structure of HashMap
+
     }
 }
